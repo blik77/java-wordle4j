@@ -37,7 +37,7 @@ public class Wordle {
         log.write("Начало игры");
         log.write("Загадано слово: " + game.getAnswer());
         System.out.println("==================================================");
-        System.out.println("Нужно угадать слово из 5 русских букв за " + COUNT_STEPS +" попыток");
+        System.out.println("Нужно угадать слово из 5 русских букв за " + COUNT_STEPS + " попыток");
         System.out.println("Для подсказки просто нажмите Enter (всего " + COUNT_HINTS + " раз)");
         System.out.println("Введите \"стоп\" для выхода из программы");
         System.out.println("==================================================");
