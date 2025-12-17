@@ -27,6 +27,6 @@ public class WordleGameTest {
     @Test
     public void shouldGiveCorrectHintWord() {
         wg.setAnswer("книга");
-        Assertions.assertEquals("книги", wg.getHint("++++-", List.of()));
+        Assertions.assertEquals("книги", wg.getHint("++++-", List.of("книга")));
     }
 }
