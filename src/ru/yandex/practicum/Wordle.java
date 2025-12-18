@@ -51,7 +51,7 @@ public class Wordle {
         int countUsedHint = 0;
         while (game.getSteps() > 0) {
             System.out.print("Введите слово (осталось попыток - " + game.getSteps() + "): ");
-            String inputWord = WordleDictionary.wordNormalization(scanner.nextLine());
+            String inputWord = WordleDictionary.normalizeWord(scanner.nextLine());
             log.write("Введено слово: " + inputWord);
             if (inputWord.equals(STOP_WORD)) {
                 log.write("Принудительный выход из игры");

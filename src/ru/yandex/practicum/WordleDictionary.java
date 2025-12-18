@@ -19,7 +19,10 @@ public class WordleDictionary {
         return words;
     }
 
-    public static String wordNormalization(String word) {
+    public static String normalizeWord(String word) {
+        if (word == null) {
+            return "";
+        }
         return word.trim().toLowerCase().replace('ё', 'е');
     }
 }
