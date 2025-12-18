@@ -17,9 +17,9 @@ public class WordleDictionaryLoader {
         try (BufferedReader br = new BufferedReader(new FileReader(fileName, StandardCharsets.UTF_8))) {
             List<String> words = new ArrayList<>();
             while (br.ready()) {
-                String word = br.readLine().trim();
+                String word = WordleDictionary.wordNormalization(br.readLine());
                 if (word.matches("[а-яёА-ЯЁ]{5}")) {
-                    words.add(word.toLowerCase().replace('ё', 'е'));
+                    words.add(word);
                 }
             }
             return new WordleDictionary(words);

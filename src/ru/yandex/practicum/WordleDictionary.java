@@ -18,4 +18,8 @@ public class WordleDictionary {
     public List<String> getWords() {
         return words;
     }
+
+    public static String wordNormalization(String word) {
+        return word.trim().toLowerCase().replace('ё', 'е');
+    }
 }

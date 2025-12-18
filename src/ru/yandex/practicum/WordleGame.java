@@ -7,6 +7,7 @@ import java.util.Random;
 import java.util.Set;
 
 public class WordleGame {
+    private static final int MASK_LENGTH = 5;
     private String answer;
     private int steps;
     private final WordleDictionary  dictionary;
@@ -64,7 +65,7 @@ public class WordleGame {
     }
 
     public boolean checkMask(String word, String mask) {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < MASK_LENGTH; i++) {
             char wChar = word.charAt(i);
             char mChar = mask.charAt(i);
             char aChar = answer.charAt(i);

@@ -8,9 +8,12 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Wordle {
-    public static final String WORDS_FILE = "words_ru.txt";
-    public static final int COUNT_HINTS = 5;
-    public static final int COUNT_STEPS = 6;
+    private static final String WORDS_FILE = "words_ru.txt";
+    private static final int COUNT_HINTS = 5;
+    private static final int COUNT_STEPS = 6;
+    private static final String START_MASK = "-----";
+    private static final String WINNING_MASK = "+++++";
+    private static final String STOP_WORD = "стоп";
 
     private final WordleDictionary wd;
 
@@ -39,18 +42,18 @@ public class Wordle {
         System.out.println("==================================================");
         System.out.println("Нужно угадать слово из 5 русских букв за " + COUNT_STEPS + " попыток");
         System.out.println("Для подсказки просто нажмите Enter (всего " + COUNT_HINTS + " раз)");
-        System.out.println("Введите \"стоп\" для выхода из программы");
+        System.out.println("Введите \"" + STOP_WORD + "\" для выхода из программы");
         System.out.println("==================================================");
 
         Scanner scanner = new Scanner(System.in);
         List<String> userWords = new ArrayList<>();
-        String mask = "-----";
+        String mask = START_MASK;
         int countUsedHint = 0;
         while (game.getSteps() > 0) {
             System.out.print("Введите слово (осталось попыток - " + game.getSteps() + "): ");
-            String inputWord = scanner.nextLine().trim().toLowerCase().replace("ё", "е");
+            String inputWord = WordleDictionary.wordNormalization(scanner.nextLine());
             log.write("Введено слово: " + inputWord);
-            if (inputWord.equals("стоп") || inputWord.equals("exit")) {
+            if (inputWord.equals(STOP_WORD)) {
                 log.write("Принудительный выход из игры");
                 System.out.println("Выход из игры");
                 break;
@@ -96,7 +99,7 @@ public class Wordle {
             mask = game.checkWord(inputWord);
             log.write("Совпадение: " + mask);
 
-            if (mask.equals("+++++")) {
+            if (mask.equals(WINNING_MASK)) {
                 log.write("Вы выиграли!");
                 System.out.println("Вы выиграли!");
                 return;
